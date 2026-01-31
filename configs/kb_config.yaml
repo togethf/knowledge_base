@@ -1,0 +1,14 @@
+paths:
+  schema_entities: schema/entities.json
+  schema_relations: schema/relations.json
+  seed_entities: data/seed/seed_entities.jsonl
+  seed_relations: data/seed/seed_relations.jsonl
+  processed_entities: data/processed/entities.jsonl
+  processed_relations: data/processed/relations.jsonl
+  export_nodes: data/processed/kg_nodes.csv
+  export_edges: data/processed/kg_edges.csv
+
+validation:
+  require_id: true
+  allow_unknown_entity_type: false
+  allow_unknown_relation_type: false

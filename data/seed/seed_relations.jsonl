@@ -1,0 +1,5 @@
+{"id":"rel.pest_affects_maize","type":"AFFECTS","from":"pest.fall_armyworm","to":"crop.maize","severity":"high","source_refs":["source.manual_seed"]}
+{"id":"rel.pest_causes_leaf_holes","type":"CAUSES","from":"pest.fall_armyworm","to":"symptom.leaf_holes","source_refs":["source.manual_seed"]}
+{"id":"rel.pest_occurs_seedling","type":"OCCURS_IN_STAGE","from":"pest.fall_armyworm","to":"stage.seedling","source_refs":["source.manual_seed"]}
+{"id":"rel.pest_controlled_by_spinosad","type":"CONTROLLED_BY","from":"pest.fall_armyworm","to":"pesticide.spinosad","method":"spray","source_refs":["source.manual_seed"]}
+{"id":"rel.disease_favored_by_humidity","type":"FAVORED_BY_WEATHER","from":"disease.powdery_mildew","to":"weather.high_humidity","source_refs":["source.manual_seed"]}

@@ -1,0 +1,70 @@
+{
+  "entity_types": [
+    {
+      "type": "Pest",
+      "description": "Insect or other pest species that damages crops.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["aliases", "description", "taxonomy", "image_refs", "source_refs"]
+    },
+    {
+      "type": "Disease",
+      "description": "Plant disease (fungal, bacterial, viral, etc.).",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["aliases", "description", "pathogen", "image_refs", "source_refs"]
+    },
+    {
+      "type": "Crop",
+      "description": "Crop species or cultivar.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["aliases", "description", "taxonomy", "source_refs"]
+    },
+    {
+      "type": "GrowthStage",
+      "description": "Crop growth stage (seedling, flowering, etc.).",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["description", "source_refs"]
+    },
+    {
+      "type": "Pesticide",
+      "description": "Chemical or biological control product.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["aliases", "active_ingredient", "description", "source_refs"]
+    },
+    {
+      "type": "WeatherEvent",
+      "description": "Weather condition or event relevant to pest/disease dynamics.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["description", "thresholds", "source_refs"]
+    },
+    {
+      "type": "Symptom",
+      "description": "Visible symptom on crop.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["description", "image_refs", "source_refs"]
+    },
+    {
+      "type": "Location",
+      "description": "Geographic region or administrative area.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["description", "geo"]
+    },
+    {
+      "type": "Image",
+      "description": "Image reference for a pest, symptom, or crop.",
+      "required_fields": ["id", "uri"],
+      "optional_fields": ["caption", "source_refs"]
+    },
+    {
+      "type": "Source",
+      "description": "Source metadata for provenance.",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["uri", "license", "notes"]
+    },
+    {
+      "type": "Observation",
+      "description": "A recorded observation (image + context).",
+      "required_fields": ["id", "name"],
+      "optional_fields": ["timestamp", "image_refs", "source_refs", "notes"]
+    }
+  ]
+}

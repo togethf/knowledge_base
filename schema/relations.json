@@ -1,0 +1,67 @@
+{
+  "relation_types": [
+    {
+      "type": "AFFECTS",
+      "description": "Pest or disease affects a crop.",
+      "from": ["Pest", "Disease"],
+      "to": ["Crop"],
+      "optional_fields": ["severity", "notes", "source_refs"]
+    },
+    {
+      "type": "CAUSES",
+      "description": "Pest or disease causes a symptom.",
+      "from": ["Pest", "Disease"],
+      "to": ["Symptom"],
+      "optional_fields": ["notes", "source_refs"]
+    },
+    {
+      "type": "OCCURS_IN_STAGE",
+      "description": "Pest or disease occurs during a growth stage.",
+      "from": ["Pest", "Disease"],
+      "to": ["GrowthStage"],
+      "optional_fields": ["notes", "source_refs"]
+    },
+    {
+      "type": "CONTROLLED_BY",
+      "description": "Pest or disease can be controlled by a pesticide.",
+      "from": ["Pest", "Disease"],
+      "to": ["Pesticide"],
+      "optional_fields": ["method", "dosage", "notes", "source_refs"]
+    },
+    {
+      "type": "FAVORED_BY_WEATHER",
+      "description": "Pest or disease is favored by a weather event.",
+      "from": ["Pest", "Disease"],
+      "to": ["WeatherEvent"],
+      "optional_fields": ["thresholds", "notes", "source_refs"]
+    },
+    {
+      "type": "OBSERVED_AT",
+      "description": "Observation is linked to a location.",
+      "from": ["Observation"],
+      "to": ["Location"],
+      "optional_fields": ["notes"]
+    },
+    {
+      "type": "OBSERVES",
+      "description": "Observation references a pest or disease.",
+      "from": ["Observation"],
+      "to": ["Pest", "Disease"],
+      "optional_fields": ["confidence", "notes"]
+    },
+    {
+      "type": "HAS_IMAGE",
+      "description": "Entity has an image reference.",
+      "from": ["Pest", "Disease", "Symptom", "Crop"],
+      "to": ["Image"],
+      "optional_fields": ["notes"]
+    },
+    {
+      "type": "CITED_FROM",
+      "description": "Entity or relation cites a source.",
+      "from": ["Pest", "Disease", "Crop", "GrowthStage", "Pesticide", "WeatherEvent", "Symptom", "Observation"],
+      "to": ["Source"],
+      "optional_fields": ["notes"]
+    }
+  ]
+}

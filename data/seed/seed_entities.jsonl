@@ -1,0 +1,31 @@
+{"id":"pest.fall_armyworm","type":"Pest","name":"Fall armyworm","aliases":["Spodoptera frugiperda"],"description":"A moth larva that damages maize and other crops.","taxonomy":{"genus":"Spodoptera","species":"frugiperda"},"source_refs":["source.manual_seed"]}
+{"id":"disease.powdery_mildew","type":"Disease","name":"Powdery mildew","description":"Fungal disease with white powdery spots on leaves.","source_refs":["source.manual_seed"]}
+{"id":"crop.maize","type":"Crop","name":"Maize","aliases":["Corn"],"description":"Cereal crop widely cultivated for grain.","source_refs":["source.manual_seed"]}
+{"id":"crop.rice","type":"Crop","name":"Rice","aliases":["Oryza sativa","Paddy rice"],"description":"Staple cereal crop cultivated worldwide.","source_refs":["source.manual_seed"]}
+{"id":"stage.seedling","type":"GrowthStage","name":"Seedling","description":"Early growth stage after germination.","source_refs":["source.manual_seed"]}
+{"id":"stage.tillering","type":"GrowthStage","name":"Tillering","description":"Stage when rice produces tillers.","source_refs":["source.manual_seed"]}
+{"id":"stage.flowering","type":"GrowthStage","name":"Flowering","description":"Flowering stage of crop.","source_refs":["source.manual_seed"]}
+{"id":"stage.milk","type":"GrowthStage","name":"Milk stage","description":"Grain milk stage after flowering.","source_refs":["source.manual_seed"]}
+{"id":"stage.dough","type":"GrowthStage","name":"Dough stage","description":"Grain dough stage after milk stage.","source_refs":["source.manual_seed"]}
+{"id":"pesticide.spinosad","type":"Pesticide","name":"Spinosad","active_ingredient":"Spinosad","description":"Biological insecticide used for caterpillars.","source_refs":["source.manual_seed"]}
+{"id":"pesticide.insecticide_generic","type":"Pesticide","name":"Generic insecticide","aliases":["insecticide","pesticide"],"description":"Non-specific insecticide placeholder for weak extraction.","source_refs":["source.manual_seed"]}
+{"id":"weather.high_humidity","type":"WeatherEvent","name":"High humidity","description":"Sustained high relative humidity.","thresholds":{"relative_humidity":">=85%"},"source_refs":["source.manual_seed"]}
+{"id":"symptom.leaf_holes","type":"Symptom","name":"Leaf holes","description":"Irregular holes or chewing damage on leaves.","source_refs":["source.manual_seed"]}
+{"id":"symptom.hopperburn","type":"Symptom","name":"Hopperburn","description":"Wilting and browning of plants caused by planthopper feeding.","source_refs":["source.manual_seed"]}
+{"id":"symptom.wilting","type":"Symptom","name":"Wilting","description":"Plant wilting due to damage or stress.","source_refs":["source.manual_seed"]}
+{"id":"symptom.yellowing","type":"Symptom","name":"Yellowing","description":"Yellowing of leaves or plants (chlorosis).","source_refs":["source.manual_seed"]}
+{"id":"symptom.deadheart","type":"Symptom","name":"Deadheart","description":"Dead central shoot in tillering stage caused by stem borers.","source_refs":["source.manual_seed"]}
+{"id":"symptom.whitehead","type":"Symptom","name":"Whitehead","description":"White, empty panicles in reproductive stage caused by stem borers.","source_refs":["source.manual_seed"]}
+{"id":"location.test_field","type":"Location","name":"Test field","description":"Example placeholder location.","geo":{"lat":0.0,"lon":0.0}}
+{"id":"source.manual_seed","type":"Source","name":"Manual seed","notes":"Manually authored example records."}
+{"id":"pest.cnaphalocrocis_medinalis","type":"Pest","name":"稻纵卷叶螟","aliases":["Cnaphalocrocis medinalis","DaoZhong"],"description":"水稻主要害虫之一，幼虫卷叶取食。","source_refs":["source.manual_seed"]}
+{"id":"pest.chilo_suppressalis","type":"Pest","name":"二化螟","aliases":["Chilo suppressalis","ErHua"],"description":"水稻钻蛀性害虫，危害稻秆。","source_refs":["source.manual_seed"]}
+{"id":"pest.sesamia_inferens","type":"Pest","name":"大螟","aliases":["Sesamia inferens","DaMingShen"],"description":"禾本科作物钻蛀性害虫。","source_refs":["source.manual_seed"]}
+{"id":"pest.sogatella_furcifera","type":"Pest","name":"白背飞虱","aliases":["Sogatella furcifera","HeiBai"],"description":"刺吸式口器害虫，危害水稻。","source_refs":["source.manual_seed"]}
+{"id":"pest.dao_ming_ling","type":"Pest","name":"稻螟蛉","aliases":["DaoMingLing"],"description":"水稻害虫，具体种名待补充。","source_refs":["source.manual_seed"]}
+{"id":"pest.ostrinia_nubilalis","type":"Pest","name":"玉米螟","aliases":["Ostrinia nubilalis","YuMiMing"],"description":"玉米重要钻蛀性害虫。","source_refs":["source.manual_seed"]}
+{"id":"pest.stilpnotia_salicis","type":"Pest","name":"杨雪毒蛾","aliases":["Stilpnotia salicis","YangXue"],"description":"林木害虫，取食叶片。","source_refs":["source.manual_seed"]}
+{"id":"pest.gryllotalpa_spp","type":"Pest","name":"螻蛄","aliases":["Gryllotalpa spp.","LouGu"],"description":"地下害虫，咬食根茎。","source_refs":["source.manual_seed"]}
+{"id":"pest.anomala_corpulenta","type":"Pest","name":"金龟子","aliases":["Anomala corpulenta","JinGui"],"description":"取食叶片或根部的害虫。","source_refs":["source.manual_seed"]}
+{"id":"pest.nilaparvata_lugens","type":"Pest","name":"褐飞虱","aliases":["Nilaparvata lugens","brown planthopper"],"description":"水稻重要害虫，刺吸危害。","source_refs":["source.manual_seed"]}
+{"id":"pest.planthopper","type":"Pest","name":"稻飞虱","aliases":["rice planthopper","planthopper"],"description":"稻飞虱类害虫统称（含褐飞虱、白背飞虱等）。","source_refs":["source.manual_seed"]}
