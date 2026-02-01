@@ -68,3 +68,15 @@
 {"id": "pesticide.ai_82f46def", "type": "Pesticide", "name": "Phorate", "active_ingredient": "Phorate", "description": "Auto-extracted pesticide recommendation.", "source_refs": ["source.csrl_rice_gall_midge_2018"]}
 {"id": "pesticide.ai_f797f88c", "type": "Pesticide", "name": "phorate", "active_ingredient": "phorate", "description": "Auto-extracted pesticide recommendation.", "source_refs": ["source.csrl_rice_gall_midge_2018"]}
 {"id": "pesticide.ai_5b81715a", "type": "Pesticide", "name": "quinalphos", "active_ingredient": "quinalphos", "description": "Auto-extracted pesticide recommendation.", "source_refs": ["source.csrl_rice_gall_midge_2018"]}
+{"id": "crop.rice", "type": "Crop", "name": "水稻", "aliases": ["Rice", "Oryza sativa"], "description": "主要粮食作物，广泛种植于亚洲地区。", "source_refs": ["source.manual_seed"]}
+{"id": "pest.planthopper", "type": "Pest", "name": "稻飞虱", "aliases": ["Planthopper", "Rice planthopper"], "description": "水稻重要害虫的统称，包括褐飞虱、白背飞虱等。", "source_refs": ["source.manual_seed"]}
+{"id": "pesticide.insecticide_generic", "type": "Pesticide", "name": "通用杀虫剂", "aliases": ["Insecticide"], "description": "用于防治害虫的通用农药类别。", "source_refs": ["source.manual_seed"]}
+{"id": "stage.tillering", "type": "GrowthStage", "name": "分蘖期", "aliases": ["Tillering"], "description": "水稻分蘖生长阶段，植株开始分枝。", "source_refs": ["source.manual_seed"]}
+{"id": "stage.flowering", "type": "GrowthStage", "name": "开花期", "aliases": ["Flowering", "Anthesis"], "description": "作物开花授粉阶段。", "source_refs": ["source.manual_seed"]}
+{"id": "stage.milk", "type": "GrowthStage", "name": "乳熟期", "aliases": ["Milk stage"], "description": "谷粒灌浆初期，籽粒呈乳状。", "source_refs": ["source.manual_seed"]}
+{"id": "stage.dough", "type": "GrowthStage", "name": "蜡熟期", "aliases": ["Dough stage"], "description": "谷粒接近成熟，呈蜡质状态。", "source_refs": ["source.manual_seed"]}
+{"id": "symptom.yellowing", "type": "Symptom", "name": "黄化", "aliases": ["Yellowing", "Chlorosis"], "description": "叶片或植株变黄的症状。", "source_refs": ["source.manual_seed"]}
+{"id": "symptom.wilting", "type": "Symptom", "name": "萎蔫", "aliases": ["Wilting"], "description": "植株失水枯萎的症状。", "source_refs": ["source.manual_seed"]}
+{"id": "symptom.hopperburn", "type": "Symptom", "name": "飞虱烧", "aliases": ["Hopperburn"], "description": "飞虱严重危害导致的枯死症状。", "source_refs": ["source.manual_seed"]}
+{"id": "symptom.deadheart", "type": "Symptom", "name": "枯心", "aliases": ["Deadheart"], "description": "心叶枯死，常由螟虫钻蛀造成。", "source_refs": ["source.manual_seed"]}
+{"id": "symptom.whitehead", "type": "Symptom", "name": "白穗", "aliases": ["Whitehead"], "description": "穗部变白不结实，常由螟虫危害造成。", "source_refs": ["source.manual_seed"]}

@@ -1,0 +1,571 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+                <link href="lib/tom-select/tom-select.css" rel="stylesheet">
+                <script src="lib/tom-select/tom-select.complete.min.js"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #1a1a2e;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="pest.fall_armyworm">pest.fall_armyworm</option>
+                                
+                                    <option value="disease.powdery_mildew">disease.powdery_mildew</option>
+                                
+                                    <option value="crop.maize">crop.maize</option>
+                                
+                                    <option value="stage.seedling">stage.seedling</option>
+                                
+                                    <option value="pesticide.spinosad">pesticide.spinosad</option>
+                                
+                                    <option value="weather.high_humidity">weather.high_humidity</option>
+                                
+                                    <option value="symptom.leaf_holes">symptom.leaf_holes</option>
+                                
+                                    <option value="location.test_field">location.test_field</option>
+                                
+                                    <option value="source.manual_seed">source.manual_seed</option>
+                                
+                                    <option value="pest.cnaphalocrocis_medinalis">pest.cnaphalocrocis_medinalis</option>
+                                
+                                    <option value="pest.chilo_suppressalis">pest.chilo_suppressalis</option>
+                                
+                                    <option value="pest.sesamia_inferens">pest.sesamia_inferens</option>
+                                
+                                    <option value="pest.sogatella_furcifera">pest.sogatella_furcifera</option>
+                                
+                                    <option value="pest.dao_ming_ling">pest.dao_ming_ling</option>
+                                
+                                    <option value="pest.ostrinia_nubilalis">pest.ostrinia_nubilalis</option>
+                                
+                                    <option value="pest.stilpnotia_salicis">pest.stilpnotia_salicis</option>
+                                
+                                    <option value="pest.gryllotalpa_spp">pest.gryllotalpa_spp</option>
+                                
+                                    <option value="pest.anomala_corpulenta">pest.anomala_corpulenta</option>
+                                
+                                    <option value="pest.nilaparvata_lugens">pest.nilaparvata_lugens</option>
+                                
+                                    <option value="pesticide.ai_3ff0eb33">pesticide.ai_3ff0eb33</option>
+                                
+                                    <option value="pesticide.ai_1a688850">pesticide.ai_1a688850</option>
+                                
+                                    <option value="pesticide.ai_e3480523">pesticide.ai_e3480523</option>
+                                
+                                    <option value="pesticide.ai_df58ee9c">pesticide.ai_df58ee9c</option>
+                                
+                                    <option value="pesticide.ai_0fd8f386">pesticide.ai_0fd8f386</option>
+                                
+                                    <option value="pesticide.ai_5991654f">pesticide.ai_5991654f</option>
+                                
+                                    <option value="pesticide.ai_124b81dd">pesticide.ai_124b81dd</option>
+                                
+                                    <option value="pesticide.ai_8c606bf4">pesticide.ai_8c606bf4</option>
+                                
+                                    <option value="pesticide.ai_1d4e8631">pesticide.ai_1d4e8631</option>
+                                
+                                    <option value="pesticide.ai_798ec698">pesticide.ai_798ec698</option>
+                                
+                                    <option value="pesticide.ai_6cf127ac">pesticide.ai_6cf127ac</option>
+                                
+                                    <option value="pesticide.ai_a111462d">pesticide.ai_a111462d</option>
+                                
+                                    <option value="pesticide.ai_2df5c967">pesticide.ai_2df5c967</option>
+                                
+                                    <option value="pesticide.ai_ae2b9263">pesticide.ai_ae2b9263</option>
+                                
+                                    <option value="pesticide.ai_b99b5068">pesticide.ai_b99b5068</option>
+                                
+                                    <option value="pesticide.ai_ae429402">pesticide.ai_ae429402</option>
+                                
+                                    <option value="pesticide.ai_c3c121f2">pesticide.ai_c3c121f2</option>
+                                
+                                    <option value="pesticide.ai_9dbbee56">pesticide.ai_9dbbee56</option>
+                                
+                                    <option value="pesticide.ai_7fb4f202">pesticide.ai_7fb4f202</option>
+                                
+                                    <option value="pesticide.ai_a33d6d1a">pesticide.ai_a33d6d1a</option>
+                                
+                                    <option value="pesticide.ai_bfe0806f">pesticide.ai_bfe0806f</option>
+                                
+                                    <option value="pesticide.ai_f7fbc34d">pesticide.ai_f7fbc34d</option>
+                                
+                                    <option value="pesticide.ai_00348667">pesticide.ai_00348667</option>
+                                
+                                    <option value="pesticide.ai_8f7299bc">pesticide.ai_8f7299bc</option>
+                                
+                                    <option value="pesticide.ai_9b9cabe7">pesticide.ai_9b9cabe7</option>
+                                
+                                    <option value="pesticide.ai_cb9b7dba">pesticide.ai_cb9b7dba</option>
+                                
+                                    <option value="pesticide.ai_7ae3d05d">pesticide.ai_7ae3d05d</option>
+                                
+                                    <option value="pesticide.ai_51eecf7c">pesticide.ai_51eecf7c</option>
+                                
+                                    <option value="pesticide.ai_88b1b895">pesticide.ai_88b1b895</option>
+                                
+                                    <option value="pesticide.ai_d882d09e">pesticide.ai_d882d09e</option>
+                                
+                                    <option value="pesticide.ai_d845db2b">pesticide.ai_d845db2b</option>
+                                
+                                    <option value="pesticide.ai_bab4ae08">pesticide.ai_bab4ae08</option>
+                                
+                                    <option value="pesticide.ai_96407232">pesticide.ai_96407232</option>
+                                
+                                    <option value="pesticide.ai_c2005456">pesticide.ai_c2005456</option>
+                                
+                                    <option value="pesticide.ai_cbd952d9">pesticide.ai_cbd952d9</option>
+                                
+                                    <option value="pesticide.ai_04bc7417">pesticide.ai_04bc7417</option>
+                                
+                                    <option value="pesticide.ai_f9470f9f">pesticide.ai_f9470f9f</option>
+                                
+                                    <option value="pesticide.ai_fc07ac64">pesticide.ai_fc07ac64</option>
+                                
+                                    <option value="pesticide.ai_b6d315e1">pesticide.ai_b6d315e1</option>
+                                
+                                    <option value="pesticide.ai_010851ce">pesticide.ai_010851ce</option>
+                                
+                                    <option value="pesticide.ai_dae83a63">pesticide.ai_dae83a63</option>
+                                
+                                    <option value="pesticide.ai_541aca4e">pesticide.ai_541aca4e</option>
+                                
+                                    <option value="pesticide.ai_88e06358">pesticide.ai_88e06358</option>
+                                
+                                    <option value="pesticide.ai_b01ff4f1">pesticide.ai_b01ff4f1</option>
+                                
+                                    <option value="pesticide.ai_a85c4638">pesticide.ai_a85c4638</option>
+                                
+                                    <option value="pesticide.ai_dd9c15df">pesticide.ai_dd9c15df</option>
+                                
+                                    <option value="pesticide.ai_33d48e4f">pesticide.ai_33d48e4f</option>
+                                
+                                    <option value="pesticide.ai_a9d19325">pesticide.ai_a9d19325</option>
+                                
+                                    <option value="pesticide.ai_82f46def">pesticide.ai_82f46def</option>
+                                
+                                    <option value="pesticide.ai_f797f88c">pesticide.ai_f797f88c</option>
+                                
+                                    <option value="pesticide.ai_5b81715a">pesticide.ai_5b81715a</option>
+                                
+                                    <option value="crop.rice">crop.rice</option>
+                                
+                                    <option value="pest.planthopper">pest.planthopper</option>
+                                
+                                    <option value="pesticide.insecticide_generic">pesticide.insecticide_generic</option>
+                                
+                                    <option value="stage.tillering">stage.tillering</option>
+                                
+                                    <option value="stage.flowering">stage.flowering</option>
+                                
+                                    <option value="stage.milk">stage.milk</option>
+                                
+                                    <option value="stage.dough">stage.dough</option>
+                                
+                                    <option value="symptom.yellowing">symptom.yellowing</option>
+                                
+                                    <option value="symptom.wilting">symptom.wilting</option>
+                                
+                                    <option value="symptom.hopperburn">symptom.hopperburn</option>
+                                
+                                    <option value="symptom.deadheart">symptom.deadheart</option>
+                                
+                                    <option value="symptom.whitehead">symptom.whitehead</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+              <div id="filter-menu" class="card-header">
+                <div class="row no-gutters">
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'item')"
+                            id="select-item"
+                        >
+                        <option value="">Select a network item</option>
+                        <option value="edge">edge</option>
+                        <option value="node">node</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="updateFilter(value, 'property')"
+                            id="select-property"
+                        >
+                        <option value="">Select a property...</option>
+                    </select>
+                  </div>
+                  <div class="col-3 pb-2">
+                    <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            id="select-value"
+                        >
+                        <option value="">Select value(s)...</option>
+                    </select>
+                  </div>
+                  <div class="col-1 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="highlightFilter(filter);">Filter</button>
+                  </div>
+                  <div class="col-2 pb-2">
+                    <button type="button" class="btn btn-primary btn-block" onclick="clearFilter(true)">Reset Selection</button>
+                  </div>
+                </div>
+              </div>
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+                  // explicitly using onItemAdd and this function as we need to save multiple values
+                  let updateValueFilter = function() {
+                      return function () {
+                      filter['value'].push(arguments[0])
+                      }
+                  }
+
+                  let valueControl = new TomSelect("#select-value",{
+                      maxItems: null,
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: updateValueFilter()
+                  });
+
+                  let addValues = function() {
+                      return function () {
+                          // clear the current value options and add the selected attribute values
+                          // tom-select handles duplicates
+                          let selectedProperty = arguments[0];
+                          valueControl.clear();
+                          valueControl.clearOptions();
+                          filter['value'] = []
+                          if (filter['item'] === 'node') {
+                              for (let each in allNodes) {
+                                  valueControl.addOption({
+                                      id:allNodes[each][selectedProperty],
+                                      title:allNodes[each][selectedProperty]
+                                  })
+                              }
+                          }
+                          else if (filter['item'] === 'edge') {
+                              for (let each in allEdges) {
+                                  valueControl.addOption({
+                                      id:allEdges[each][selectedProperty],
+                                      title:allEdges[each][selectedProperty]
+                                  })
+                              }
+                          }
+                      }
+                  };
+
+                  let propControl = new TomSelect("#select-property",{
+                      valueField: 'id',
+                      labelField: 'title',
+                      searchField: 'title',
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addValues()
+                  });
+
+                  let addProperties = function() {
+                      return function () {
+                          // loops through the selected network item and adds the attributes to dropdown
+                          // tom-select handles duplicates
+                          clearFilter(false)
+                          if (arguments[0] === 'edge') {
+                              for (let each in allEdges) {
+                                  if (allEdges.hasOwnProperty(each)) {
+                                      for (let eachProp in allEdges[each]) {
+                                          if (allEdges[each].hasOwnProperty(eachProp)) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                          else if (arguments[0] === 'node') {
+                              for (let each in allNodes) {
+                                  if (allNodes.hasOwnProperty(each)) {
+                                      for (let eachProp in allNodes[each]) {
+                                          if (allNodes[each].hasOwnProperty(eachProp)
+                                              && (eachProp !== 'hidden' && eachProp !== 'savedLabel'
+                                                  && eachProp !== 'hiddenLabel')) {
+                                              propControl.addOption({id: eachProp, title: eachProp})
+
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  };
+
+                  let itemControl = new TomSelect("#select-item",{
+                      create: false,
+                      sortField:{
+                          field: "text",
+                          direction: "asc"
+                      },
+                      onItemAdd: addProperties()
+                  });
+
+                  function clearFilter(reset) {
+                      // utility function to clear all the selected filter options
+                      // if reset is set to true, the existing filter will be removed
+                      // else, only the dropdown options are cleared
+                      propControl.clear();
+                      propControl.clearOptions();
+                      valueControl.clear();
+                      valueControl.clearOptions();
+                      filter = {
+                          item : '',
+                          property : '',
+                          value : []
+                      }
+                      if (reset) {
+                          itemControl.clear();
+                          filterHighlight({nodes: []})
+                      }
+                  }
+
+                  function updateFilter(value, key) {
+                      // key could be 'item' or 'property' and value is as selected in dropdown
+                      filter[key] = value
+                  }
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "white"}, "group": "Pest", "id": "pest.fall_armyworm", "label": "Fall armyworm", "shape": "dot", "size": 30, "title": "\u003cb\u003eFall armyworm\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.fall_armyworm\u003cbr\u003e\u003cbr\u003eA moth larva that damages maize and other crops...."}, {"font": {"color": "white"}, "group": "Disease", "id": "disease.powdery_mildew", "label": "Powdery mildew", "shape": "dot", "size": 24, "title": "\u003cb\u003ePowdery mildew\u003c/b\u003e\u003cbr\u003eType: Disease\u003cbr\u003eID: disease.powdery_mildew\u003cbr\u003e\u003cbr\u003eFungal disease with white powdery spots on leaves...."}, {"font": {"color": "white"}, "group": "Crop", "id": "crop.maize", "label": "Maize", "shape": "dot", "size": 33, "title": "\u003cb\u003eMaize\u003c/b\u003e\u003cbr\u003eType: Crop\u003cbr\u003eID: crop.maize\u003cbr\u003e\u003cbr\u003eCereal crop widely cultivated for grain...."}, {"font": {"color": "white"}, "group": "GrowthStage", "id": "stage.seedling", "label": "Seedling", "shape": "dot", "size": 18, "title": "\u003cb\u003eSeedling\u003c/b\u003e\u003cbr\u003eType: GrowthStage\u003cbr\u003eID: stage.seedling\u003cbr\u003e\u003cbr\u003eEarly growth stage after germination...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.spinosad", "label": "Spinosad", "shape": "dot", "size": 15, "title": "\u003cb\u003eSpinosad\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.spinosad\u003cbr\u003e\u003cbr\u003eBiological insecticide used for caterpillars...."}, {"font": {"color": "white"}, "group": "WeatherEvent", "id": "weather.high_humidity", "label": "High humidity", "shape": "dot", "size": 21, "title": "\u003cb\u003eHigh humidity\u003c/b\u003e\u003cbr\u003eType: WeatherEvent\u003cbr\u003eID: weather.high_humidity\u003cbr\u003e\u003cbr\u003eSustained high relative humidity...."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.leaf_holes", "label": "Leaf holes", "shape": "dot", "size": 21, "title": "\u003cb\u003eLeaf holes\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.leaf_holes\u003cbr\u003e\u003cbr\u003eIrregular holes or chewing damage on leaves...."}, {"font": {"color": "white"}, "group": "Location", "id": "location.test_field", "label": "Test field", "shape": "dot", "size": 15, "title": "\u003cb\u003eTest field\u003c/b\u003e\u003cbr\u003eType: Location\u003cbr\u003eID: location.test_field\u003cbr\u003e\u003cbr\u003eExample placeholder location...."}, {"font": {"color": "white"}, "group": "Source", "id": "source.manual_seed", "label": "Manual seed", "shape": "dot", "size": 15, "title": "\u003cb\u003eManual seed\u003c/b\u003e\u003cbr\u003eType: Source\u003cbr\u003eID: source.manual_seed"}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.cnaphalocrocis_medinalis", "label": "\u7a3b\u7eb5\u5377\u53f6\u879f", "shape": "dot", "size": 45, "title": "\u003cb\u003e\u7a3b\u7eb5\u5377\u53f6\u879f\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.cnaphalocrocis_medinalis\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u4e3b\u8981\u5bb3\u866b\u4e4b\u4e00\uff0c\u5e7c\u866b\u5377\u53f6\u53d6\u98df\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.chilo_suppressalis", "label": "\u4e8c\u5316\u879f", "shape": "dot", "size": 45, "title": "\u003cb\u003e\u4e8c\u5316\u879f\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.chilo_suppressalis\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u94bb\u86c0\u6027\u5bb3\u866b\uff0c\u5371\u5bb3\u7a3b\u79c6\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.sesamia_inferens", "label": "\u5927\u879f", "shape": "dot", "size": 33, "title": "\u003cb\u003e\u5927\u879f\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.sesamia_inferens\u003cbr\u003e\u003cbr\u003e\u79be\u672c\u79d1\u4f5c\u7269\u94bb\u86c0\u6027\u5bb3\u866b\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.sogatella_furcifera", "label": "\u767d\u80cc\u98de\u8671", "shape": "dot", "size": 45, "title": "\u003cb\u003e\u767d\u80cc\u98de\u8671\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.sogatella_furcifera\u003cbr\u003e\u003cbr\u003e\u523a\u5438\u5f0f\u53e3\u5668\u5bb3\u866b\uff0c\u5371\u5bb3\u6c34\u7a3b\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.dao_ming_ling", "label": "\u7a3b\u879f\u86c9", "shape": "dot", "size": 33, "title": "\u003cb\u003e\u7a3b\u879f\u86c9\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.dao_ming_ling\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u5bb3\u866b\uff0c\u5177\u4f53\u79cd\u540d\u5f85\u8865\u5145\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.ostrinia_nubilalis", "label": "\u7389\u7c73\u879f", "shape": "dot", "size": 30, "title": "\u003cb\u003e\u7389\u7c73\u879f\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.ostrinia_nubilalis\u003cbr\u003e\u003cbr\u003e\u7389\u7c73\u91cd\u8981\u94bb\u86c0\u6027\u5bb3\u866b\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.stilpnotia_salicis", "label": "\u6768\u96ea\u6bd2\u86fe", "shape": "dot", "size": 30, "title": "\u003cb\u003e\u6768\u96ea\u6bd2\u86fe\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.stilpnotia_salicis\u003cbr\u003e\u003cbr\u003e\u6797\u6728\u5bb3\u866b\uff0c\u53d6\u98df\u53f6\u7247\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.gryllotalpa_spp", "label": "\u87bb\u86c4", "shape": "dot", "size": 33, "title": "\u003cb\u003e\u87bb\u86c4\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.gryllotalpa_spp\u003cbr\u003e\u003cbr\u003e\u5730\u4e0b\u5bb3\u866b\uff0c\u54ac\u98df\u6839\u830e\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.anomala_corpulenta", "label": "\u91d1\u9f9f\u5b50", "shape": "dot", "size": 36, "title": "\u003cb\u003e\u91d1\u9f9f\u5b50\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.anomala_corpulenta\u003cbr\u003e\u003cbr\u003e\u53d6\u98df\u53f6\u7247\u6216\u6839\u90e8\u7684\u5bb3\u866b\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.nilaparvata_lugens", "label": "\u8910\u98de\u8671", "shape": "dot", "size": 45, "title": "\u003cb\u003e\u8910\u98de\u8671\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.nilaparvata_lugens\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u91cd\u8981\u5bb3\u866b\uff0c\u523a\u5438\u5371\u5bb3\u3002..."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_3ff0eb33", "label": "\u6c2f\u866b\u82ef\u7532\u9170\u80fa", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u6c2f\u866b\u82ef\u7532\u9170\u80fa\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_3ff0eb33\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_1a688850", "label": "\u6740\u866b\u5355", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u6740\u866b\u5355\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_1a688850\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_e3480523", "label": "\u6740\u879f\u4e39", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u6740\u879f\u4e39\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_e3480523\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_df58ee9c", "label": "Bt", "shape": "dot", "size": 18, "title": "\u003cb\u003eBt\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_df58ee9c\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_0fd8f386", "label": "\u56db\u6c2f\u866b\u9170\u80fa", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u56db\u6c2f\u866b\u9170\u80fa\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_0fd8f386\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_5991654f", "label": "\u963f\u7ef4\u00b7\u6c2f\u82ef\u9170", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u963f\u7ef4\u00b7\u6c2f\u82ef\u9170\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_5991654f\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_124b81dd", "label": "\u4e59\u591a\u2022\u7532\u6c27\u866b", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u4e59\u591a\u2022\u7532\u6c27\u866b\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_124b81dd\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_8c606bf4", "label": "\u56db\u5511\u866b\u9170\u80fa", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u56db\u5511\u866b\u9170\u80fa\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_8c606bf4\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_1d4e8631", "label": "\u831a\u866b\u5a01", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u831a\u866b\u5a01\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_1d4e8631\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_798ec698", "label": "\u4e59\u57fa\u591a\u6740\u83cc\u7d20", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u4e59\u57fa\u591a\u6740\u83cc\u7d20\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_798ec698\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_6cf127ac", "label": "\u963f\u7ef4\u00b7\u7532\u866b\u80bc", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u963f\u7ef4\u00b7\u7532\u866b\u80bc\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_6cf127ac\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_a111462d", "label": "\u6beb\u5347", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u6beb\u5347\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_a111462d\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_2df5c967", "label": "/\u5347\u56db\u5511\u866b\u9170\u80fa", "shape": "dot", "size": 18, "title": "\u003cb\u003e/\u5347\u56db\u5511\u866b\u9170\u80fa\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_2df5c967\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_ae2b9263", "label": "\u963f\u7ef4\u83cc\u7d20", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u963f\u7ef4\u83cc\u7d20\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_ae2b9263\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_b99b5068", "label": "\u4e09\u6c1f\u82ef\u5627\u5576", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u4e09\u6c1f\u82ef\u5627\u5576\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_b99b5068\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_ae429402", "label": "\u70ef\u5576\u00b7\u5421\u869c\u916e", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u70ef\u5576\u00b7\u5421\u869c\u916e\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_ae429402\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_c3c121f2", "label": "\u5421\u869c\u916e", "shape": "dot", "size": 24, "title": "\u003cb\u003e\u5421\u869c\u916e\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_c3c121f2\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_9dbbee56", "label": "\u6c1f\u5576\u866b\u80fa\u8148", "shape": "dot", "size": 24, "title": "\u003cb\u003e\u6c1f\u5576\u866b\u80fa\u8148\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_9dbbee56\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_7fb4f202", "label": "\u544b\u866b\u80fa", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u544b\u866b\u80fa\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_7fb4f202\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_a33d6d1a", "label": "\u567b\u55ea\u916e", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u567b\u55ea\u916e\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_a33d6d1a\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_bfe0806f", "label": "\u70ef\u5576 \u5421\u869c\u916e", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u70ef\u5576 \u5421\u869c\u916e\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_bfe0806f\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_f7fbc34d", "label": "\u5421\u866b\u5549", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u5421\u866b\u5549\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_f7fbc34d\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_00348667", "label": "\u5151\u6c34", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u5151\u6c34\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_00348667\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_8f7299bc", "label": "\u514b\uff09\u5151\u6c34", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u514b\uff09\u5151\u6c34\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_8f7299bc\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_9b9cabe7", "label": "\u7eff\u50f5\u83cc", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u7eff\u50f5\u83cc\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_9b9cabe7\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_cb9b7dba", "label": "\u767d\u50f5\u83cc\u7c89", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u767d\u50f5\u83cc\u7c89\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_cb9b7dba\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_7ae3d05d", "label": "\u8f9b\u786b\u78f7", "shape": "dot", "size": 24, "title": "\u003cb\u003e\u8f9b\u786b\u78f7\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_7ae3d05d\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_51eecf7c", "label": "\u6bd2\u00b7\u8f9b", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u6bd2\u00b7\u8f9b\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_51eecf7c\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_88b1b895", "label": "\u9ad8\u6c2f\u7532\u7ef4\u76d0", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u9ad8\u6c2f\u7532\u7ef4\u76d0\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_88b1b895\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_d882d09e", "label": "\u82cf\u4e91\u91d1\u6746\u83cc", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u82cf\u4e91\u91d1\u6746\u83cc\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_d882d09e\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_d845db2b", "label": "\u7c73\u4e50\u5c14", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u7c73\u4e50\u5c14\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_d845db2b\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_bab4ae08", "label": "\u5df4\u4e39", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u5df4\u4e39\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_bab4ae08\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_96407232", "label": "\u654c\u767e\u866b", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u654c\u767e\u866b\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_96407232\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_c2005456", "label": "\u82e6\u53c2\u78b1", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u82e6\u53c2\u78b1\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_c2005456\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_cbd952d9", "label": "\u6bd2\u6b7b\u8731", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u6bd2\u6b7b\u8731\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_cbd952d9\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_04bc7417", "label": "\u706d\u5e7c\u8132\u2162", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u706d\u5e7c\u8132\u2162\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_04bc7417\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_f9470f9f", "label": "\u7684\u82e6\u70df", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u7684\u82e6\u70df\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_f9470f9f\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_fc07ac64", "label": "\u82e6\u70df", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u82e6\u70df\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_fc07ac64\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_b6d315e1", "label": "carbofuran", "shape": "dot", "size": 18, "title": "\u003cb\u003ecarbofuran\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_b6d315e1\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_010851ce", "label": "pooled mean revealed that next better treatment in order efficacy was Phorate", "shape": "dot", "size": 15, "title": "\u003cb\u003epooled mean revealed that next better treatment in order efficacy was Phorate\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_010851ce\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_dae83a63", "label": "found on par with phorate", "shape": "dot", "size": 15, "title": "\u003cb\u003efound on par with phorate\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_dae83a63\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_541aca4e", "label": "monocrotophos", "shape": "dot", "size": 18, "title": "\u003cb\u003emonocrotophos\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_541aca4e\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_88e06358", "label": "chlorpyriphos", "shape": "dot", "size": 18, "title": "\u003cb\u003echlorpyriphos\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_88e06358\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_b01ff4f1", "label": "evaluated various integrated pest management modules against major pests infesting rice stated that lower incidence gall midge was observed in module III module reason could be due to carbofuran", "shape": "dot", "size": 15, "title": "\u003cb\u003eevaluated various integrated pest management modules against major pests infesting rice stated that lower incidence gall midge was observed in module III module reason could be due to carbofuran\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_b01ff4f1\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_a85c4638", "label": "also revealed that carbofuran", "shape": "dot", "size": 15, "title": "\u003cb\u003ealso revealed that carbofuran\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_a85c4638\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_dd9c15df", "label": "quinalphos spray", "shape": "dot", "size": 15, "title": "\u003cb\u003equinalphos spray\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_dd9c15df\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_33d48e4f", "label": "it may be concluded that carbofuran", "shape": "dot", "size": 15, "title": "\u003cb\u003eit may be concluded that carbofuran\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_33d48e4f\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_a9d19325", "label": "or phorate", "shape": "dot", "size": 15, "title": "\u003cb\u003eor phorate\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_a9d19325\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_82f46def", "label": "Phorate", "shape": "dot", "size": 15, "title": "\u003cb\u003ePhorate\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_82f46def\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_f797f88c", "label": "phorate", "shape": "dot", "size": 18, "title": "\u003cb\u003ephorate\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_f797f88c\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.ai_5b81715a", "label": "quinalphos", "shape": "dot", "size": 18, "title": "\u003cb\u003equinalphos\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.ai_5b81715a\u003cbr\u003e\u003cbr\u003eAuto-extracted pesticide recommendation...."}, {"font": {"color": "white"}, "group": "Crop", "id": "crop.rice", "label": "\u6c34\u7a3b", "shape": "dot", "size": 36, "title": "\u003cb\u003e\u6c34\u7a3b\u003c/b\u003e\u003cbr\u003eType: Crop\u003cbr\u003eID: crop.rice\u003cbr\u003e\u003cbr\u003e\u4e3b\u8981\u7cae\u98df\u4f5c\u7269\uff0c\u5e7f\u6cdb\u79cd\u690d\u4e8e\u4e9a\u6d32\u5730\u533a\u3002..."}, {"font": {"color": "white"}, "group": "Pest", "id": "pest.planthopper", "label": "\u7a3b\u98de\u8671", "shape": "dot", "size": 33, "title": "\u003cb\u003e\u7a3b\u98de\u8671\u003c/b\u003e\u003cbr\u003eType: Pest\u003cbr\u003eID: pest.planthopper\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u91cd\u8981\u5bb3\u866b\u7684\u7edf\u79f0\uff0c\u5305\u62ec\u8910\u98de\u8671\u3001\u767d\u80cc\u98de\u8671\u7b49\u3002..."}, {"font": {"color": "white"}, "group": "Pesticide", "id": "pesticide.insecticide_generic", "label": "\u901a\u7528\u6740\u866b\u5242", "shape": "dot", "size": 33, "title": "\u003cb\u003e\u901a\u7528\u6740\u866b\u5242\u003c/b\u003e\u003cbr\u003eType: Pesticide\u003cbr\u003eID: pesticide.insecticide_generic\u003cbr\u003e\u003cbr\u003e\u7528\u4e8e\u9632\u6cbb\u5bb3\u866b\u7684\u901a\u7528\u519c\u836f\u7c7b\u522b\u3002..."}, {"font": {"color": "white"}, "group": "GrowthStage", "id": "stage.tillering", "label": "\u5206\u8616\u671f", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u5206\u8616\u671f\u003c/b\u003e\u003cbr\u003eType: GrowthStage\u003cbr\u003eID: stage.tillering\u003cbr\u003e\u003cbr\u003e\u6c34\u7a3b\u5206\u8616\u751f\u957f\u9636\u6bb5\uff0c\u690d\u682a\u5f00\u59cb\u5206\u679d\u3002..."}, {"font": {"color": "white"}, "group": "GrowthStage", "id": "stage.flowering", "label": "\u5f00\u82b1\u671f", "shape": "dot", "size": 24, "title": "\u003cb\u003e\u5f00\u82b1\u671f\u003c/b\u003e\u003cbr\u003eType: GrowthStage\u003cbr\u003eID: stage.flowering\u003cbr\u003e\u003cbr\u003e\u4f5c\u7269\u5f00\u82b1\u6388\u7c89\u9636\u6bb5\u3002..."}, {"font": {"color": "white"}, "group": "GrowthStage", "id": "stage.milk", "label": "\u4e73\u719f\u671f", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u4e73\u719f\u671f\u003c/b\u003e\u003cbr\u003eType: GrowthStage\u003cbr\u003eID: stage.milk\u003cbr\u003e\u003cbr\u003e\u8c37\u7c92\u704c\u6d46\u521d\u671f\uff0c\u7c7d\u7c92\u5448\u4e73\u72b6\u3002..."}, {"font": {"color": "white"}, "group": "GrowthStage", "id": "stage.dough", "label": "\u8721\u719f\u671f", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u8721\u719f\u671f\u003c/b\u003e\u003cbr\u003eType: GrowthStage\u003cbr\u003eID: stage.dough\u003cbr\u003e\u003cbr\u003e\u8c37\u7c92\u63a5\u8fd1\u6210\u719f\uff0c\u5448\u8721\u8d28\u72b6\u6001\u3002..."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.yellowing", "label": "\u9ec4\u5316", "shape": "dot", "size": 30, "title": "\u003cb\u003e\u9ec4\u5316\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.yellowing\u003cbr\u003e\u003cbr\u003e\u53f6\u7247\u6216\u690d\u682a\u53d8\u9ec4\u7684\u75c7\u72b6\u3002..."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.wilting", "label": "\u840e\u852b", "shape": "dot", "size": 24, "title": "\u003cb\u003e\u840e\u852b\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.wilting\u003cbr\u003e\u003cbr\u003e\u690d\u682a\u5931\u6c34\u67af\u840e\u7684\u75c7\u72b6\u3002..."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.hopperburn", "label": "\u98de\u8671\u70e7", "shape": "dot", "size": 21, "title": "\u003cb\u003e\u98de\u8671\u70e7\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.hopperburn\u003cbr\u003e\u003cbr\u003e\u98de\u8671\u4e25\u91cd\u5371\u5bb3\u5bfc\u81f4\u7684\u67af\u6b7b\u75c7\u72b6\u3002..."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.deadheart", "label": "\u67af\u5fc3", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u67af\u5fc3\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.deadheart\u003cbr\u003e\u003cbr\u003e\u5fc3\u53f6\u67af\u6b7b\uff0c\u5e38\u7531\u879f\u866b\u94bb\u86c0\u9020\u6210\u3002..."}, {"font": {"color": "white"}, "group": "Symptom", "id": "symptom.whitehead", "label": "\u767d\u7a57", "shape": "dot", "size": 18, "title": "\u003cb\u003e\u767d\u7a57\u003c/b\u003e\u003cbr\u003eType: Symptom\u003cbr\u003eID: symptom.whitehead\u003cbr\u003e\u003cbr\u003e\u7a57\u90e8\u53d8\u767d\u4e0d\u7ed3\u5b9e\uff0c\u5e38\u7531\u879f\u866b\u5371\u5bb3\u9020\u6210\u3002..."}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "#e74c3c", "from": "pest.fall_armyworm", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.fall_armyworm", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.fall_armyworm", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.flowering", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.fall_armyworm", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#1abc9c", "from": "pest.fall_armyworm", "label": "FAVORED_BY_WEATHER", "title": "FAVORED_BY_WEATHER", "to": "weather.high_humidity", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "disease.powdery_mildew", "label": "CAUSES", "title": "CAUSES", "to": "symptom.yellowing", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "disease.powdery_mildew", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.milk", "width": 2}, {"arrows": "to", "color": "#1abc9c", "from": "disease.powdery_mildew", "label": "FAVORED_BY_WEATHER", "title": "FAVORED_BY_WEATHER", "to": "weather.high_humidity", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.cnaphalocrocis_medinalis", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.cnaphalocrocis_medinalis", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.cnaphalocrocis_medinalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.yellowing", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.cnaphalocrocis_medinalis", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.seedling", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_0fd8f386", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_5991654f", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_124b81dd", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_8c606bf4", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_1d4e8631", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.cnaphalocrocis_medinalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_00348667", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.chilo_suppressalis", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.chilo_suppressalis", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.chilo_suppressalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.wilting", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.chilo_suppressalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.yellowing", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.chilo_suppressalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.deadheart", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.chilo_suppressalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.whitehead", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.chilo_suppressalis", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.tillering", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.chilo_suppressalis", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.flowering", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_3ff0eb33", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_1a688850", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_e3480523", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_df58ee9c", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_798ec698", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_6cf127ac", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_a111462d", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_2df5c967", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_ae2b9263", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.chilo_suppressalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_8c606bf4", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.sesamia_inferens", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.sesamia_inferens", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sesamia_inferens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sesamia_inferens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_d845db2b", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sesamia_inferens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_bab4ae08", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sesamia_inferens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_96407232", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.sogatella_furcifera", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.sogatella_furcifera", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.sogatella_furcifera", "label": "CAUSES", "title": "CAUSES", "to": "symptom.hopperburn", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.sogatella_furcifera", "label": "CAUSES", "title": "CAUSES", "to": "symptom.wilting", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_7fb4f202", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_c3c121f2", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_9dbbee56", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_a33d6d1a", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_bfe0806f", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.sogatella_furcifera", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_f7fbc34d", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.dao_ming_ling", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.dao_ming_ling", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_b6d315e1", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.dao_ming_ling", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_f797f88c", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.dao_ming_ling", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_541aca4e", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.dao_ming_ling", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_88e06358", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.dao_ming_ling", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_5b81715a", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.ostrinia_nubilalis", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.maize", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.ostrinia_nubilalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.yellowing", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.ostrinia_nubilalis", "label": "CAUSES", "title": "CAUSES", "to": "symptom.leaf_holes", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.ostrinia_nubilalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_7ae3d05d", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.ostrinia_nubilalis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_d882d09e", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.stilpnotia_salicis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_d882d09e", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.stilpnotia_salicis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_ae2b9263", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.stilpnotia_salicis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_04bc7417", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.stilpnotia_salicis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_f9470f9f", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.stilpnotia_salicis", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_fc07ac64", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.gryllotalpa_spp", "label": "CAUSES", "title": "CAUSES", "to": "symptom.leaf_holes", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.gryllotalpa_spp", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_9b9cabe7", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.gryllotalpa_spp", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_cb9b7dba", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.gryllotalpa_spp", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_7ae3d05d", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.gryllotalpa_spp", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_c2005456", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.gryllotalpa_spp", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_cbd952d9", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_9b9cabe7", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_cb9b7dba", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_7ae3d05d", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_51eecf7c", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_88b1b895", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_c2005456", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.anomala_corpulenta", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_cbd952d9", "width": 2}, {"arrows": "to", "color": "#e74c3c", "from": "pest.nilaparvata_lugens", "label": "AFFECTS", "title": "AFFECTS", "to": "crop.rice", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.nilaparvata_lugens", "label": "CAUSES", "title": "CAUSES", "to": "symptom.yellowing", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.insecticide_generic", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.nilaparvata_lugens", "label": "CAUSES", "title": "CAUSES", "to": "symptom.hopperburn", "width": 2}, {"arrows": "to", "color": "#e67e22", "from": "pest.nilaparvata_lugens", "label": "CAUSES", "title": "CAUSES", "to": "symptom.wilting", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.nilaparvata_lugens", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.tillering", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.nilaparvata_lugens", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.flowering", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.nilaparvata_lugens", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.milk", "width": 2}, {"arrows": "to", "color": "#f39c12", "from": "pest.nilaparvata_lugens", "label": "OCCURS_IN_STAGE", "title": "OCCURS_IN_STAGE", "to": "stage.dough", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_b99b5068", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_ae429402", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_c3c121f2", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_9dbbee56", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.nilaparvata_lugens", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_8f7299bc", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_7fb4f202", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_c3c121f2", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_9dbbee56", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_a33d6d1a", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_bfe0806f", "width": 2}, {"arrows": "to", "color": "#3498db", "from": "pest.planthopper", "label": "CONTROLLED_BY", "title": "CONTROLLED_BY", "to": "pesticide.ai_f7fbc34d", "width": 2}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 14, "face": "Arial"}, "borderWidth": 2, "borderWidthSelected": 4, "shadow": true}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 0.5}}, "smooth": {"type": "curvedCW", "roundness": 0.2}, "shadow": true, "font": {"size": 10, "align": "middle"}}, "physics": {"enabled": true, "solver": "forceAtlas2Based", "forceAtlas2Based": {"gravitationalConstant": -100, "centralGravity": 0.01, "springLength": 150, "springConstant": 0.08, "damping": 0.4}, "stabilization": {"enabled": true, "iterations": 200}}, "interaction": {"hover": true, "tooltipDelay": 100, "navigationButtons": true, "keyboard": true}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    
+    <style>
+        .legend {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            color: white;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .legend h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-right: 8px;
+            border: 1px solid #fff;
+        }
+        .stats {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #444;
+            border-radius: 8px;
+            padding: 15px;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .stats h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+        .stats p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+    </style>
+    <div class="stats">
+        <h3>📊 Knowledge Graph Stats</h3>
+        <p>🔵 Nodes: 82</p>
+        <p>🔗 Edges: 112</p>
+    </div>
+    <div class="legend">
+        <h3>🏷️ Entity Types</h3>
+    <div class="legend-item"><div class="legend-color" style="background:#e74c3c"></div>Pest (12)</div>
+<div class="legend-item"><div class="legend-color" style="background:#9b59b6"></div>Disease (1)</div>
+<div class="legend-item"><div class="legend-color" style="background:#27ae60"></div>Crop (2)</div>
+<div class="legend-item"><div class="legend-color" style="background:#f39c12"></div>GrowthStage (5)</div>
+<div class="legend-item"><div class="legend-color" style="background:#3498db"></div>Pesticide (53)</div>
+<div class="legend-item"><div class="legend-color" style="background:#1abc9c"></div>WeatherEvent (1)</div>
+<div class="legend-item"><div class="legend-color" style="background:#e67e22"></div>Symptom (6)</div>
+<div class="legend-item"><div class="legend-color" style="background:#95a5a6"></div>Location (1)</div>
+<div class="legend-item"><div class="legend-color" style="background:#7f8c8d"></div>Source (1)</div>
+
+        <h3 style="margin-top:15px;">↔️ Relation Types</h3>
+    <div class="legend-item"><div class="legend-color" style="background:#e74c3c; border-radius:2px;"></div>AFFECTS (13)</div>
+<div class="legend-item"><div class="legend-color" style="background:#e67e22; border-radius:2px;"></div>CAUSES (14)</div>
+<div class="legend-item"><div class="legend-color" style="background:#f39c12; border-radius:2px;"></div>OCCURS_IN_STAGE (9)</div>
+<div class="legend-item"><div class="legend-color" style="background:#3498db; border-radius:2px;"></div>CONTROLLED_BY (74)</div>
+<div class="legend-item"><div class="legend-color" style="background:#1abc9c; border-radius:2px;"></div>FAVORED_BY_WEATHER (2)</div>
+</div></body>
+</html>
