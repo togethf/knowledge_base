@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>害虫诊断对比系统 - Pest Comparison Tool</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔬 害虫诊断对比系统</h1>
+            <p class="subtitle">Comparative Analysis: Pest Diagnosis Systems</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">📷</div>
+                    <p>拖拽图片到这里，或点击上传</p>
+                    <p class="upload-hint">支持 JPG, PNG, JPEG, GIF, WebP 格式</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                <img id="previewImage" class="preview-image" alt="预览图片">
+            </div>
+            <button id="compareBtn" class="compare-btn" disabled>
+                <span class="btn-icon">⚡</span>
+                开始对比分析
+            </button>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>正在分析中，请稍候...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results-section hidden">
+            <h2 class="results-title">📊 对比结果</h2>
+
+            <div class="comparison-container">
+                <!-- Baseline LLM Column -->
+                <div class="result-column baseline">
+                    <div class="column-header baseline-header">
+                        <h3>Baseline: Standard VLM</h3>
+                        <span class="source-tag">GLM-4V</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="input-section">
+                            <strong>Input:</strong>
+                            <p>识别这张图片中的害虫</p>
+                        </div>
+                        <div class="output-section">
+                            <strong>Output:</strong>
+                            <pre id="baselineOutput" class="output-text"></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADCDF System Column -->
+                <div class="result-column adcdf">
+                    <div class="column-header adcdf-header">
+                        <h3>Ours: ADCDF System</h3>
+                        <span class="source-tag">YOLO + Neo4j知识库</span>
+                    </div>
+                    <div class="result-content">
+                        <div class="input-section">
+                            <strong>Input:</strong>
+                            <p>识别这张图片中的害虫</p>
+                        </div>
+
+                        <!-- Detection Image -->
+                        <div id="detectionImageContainer" class="detection-image-container hidden">
+                            <strong>🖼️ 检测结果图:</strong>
+                            <img id="detectionImage" class="detection-image" alt="检测结果">
+                        </div>
+
+                        <div class="output-section">
+                            <strong>Output (Step-by-Step):</strong>
+                            <pre id="adcdfOutput" class="output-text success"></pre>
+                        </div>
+                        <div id="detectionInfo" class="detection-info hidden">
+                            <div class="confidence-bar-container">
+                                <span>平均置信度:</span>
+                                <div class="confidence-bar">
+                                    <div id="confidenceLevel" class="confidence-level"></div>
+                                </div>
+                                <span id="confidenceValue">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Button -->
+            <div class="export-section">
+                <button id="exportBtn" class="export-btn">
+                    <span class="btn-icon">📥</span>
+                    导出对比图 (用于论文)
+                </button>
+                <p class="export-hint">将自动截取对比结果区域</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>ADCDF - Agricultural Diagnostic and Decision Framework</p>
+            <p class="timestamp" id="timestamp"></p>
+        </footer>
+    </div>
+
+    <!-- html2canvas for export functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+
+</html>
