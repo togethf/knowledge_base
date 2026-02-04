@@ -144,8 +144,8 @@ def create_visualization(entities: list[dict], relations: list[dict], output_pat
     net = Network(
         height="800px",
         width="100%",
-        bgcolor="#1a1a2e",
-        font_color="white",
+        bgcolor="#ffffff",
+        font_color="#333333",
         directed=True,
         select_menu=True,
         filter_menu=True,
@@ -258,21 +258,23 @@ def create_visualization(entities: list[dict], relations: list[dict], output_pat
             position: fixed;
             top: 10px;
             right: 10px;
-            background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
             z-index: 1000;
             font-family: Arial, sans-serif;
-            color: white;
+            color: #333;
             max-height: 400px;
             overflow-y: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .legend h3 {
             margin: 0 0 10px 0;
             font-size: 14px;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid #ddd;
             padding-bottom: 5px;
+            color: #333;
         }
         .legend-item {
             display: flex;
@@ -285,27 +287,51 @@ def create_visualization(entities: list[dict], relations: list[dict], output_pat
             height: 16px;
             border-radius: 50%;
             margin-right: 8px;
-            border: 1px solid #fff;
+            border: 1px solid #ccc;
         }
         .stats {
             position: fixed;
             top: 10px;
             left: 10px;
-            background: rgba(26, 26, 46, 0.9);
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
             z-index: 1000;
             font-family: Arial, sans-serif;
-            color: white;
+            color: #333;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         .stats h3 {
             margin: 0 0 10px 0;
             font-size: 14px;
+            color: #333;
         }
         .stats p {
             margin: 5px 0;
             font-size: 12px;
+        }
+        /* Collapsible filter panel */
+        .filter-toggle {
+            position: fixed;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 1001;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .filter-toggle:hover {
+            background: #2980b9;
+        }
+        .filter-collapsed .card {
+            display: none !important;
         }
     </style>
     <div class="stats">
@@ -338,8 +364,34 @@ def create_visualization(entities: list[dict], relations: list[dict], output_pat
     
     legend_html += "</div>"
     
-    # Insert legend before closing body tag
-    html = html.replace("</body>", legend_html + "</body>")
+    # Add collapsible filter toggle button and script
+    toggle_html = """
+    <button class="filter-toggle" onclick="toggleFilter()">📋 显示/隐藏筛选面板</button>
+    <script>
+        function toggleFilter() {
+            var headers = document.querySelectorAll('.card-header');
+            headers.forEach(function(header) {
+                if (header.style.display === 'none') {
+                    header.style.display = 'block';
+                } else {
+                    header.style.display = 'none';
+                }
+            });
+        }
+        // Initially hide the filter panel
+        window.onload = function() {
+            setTimeout(function() {
+                var headers = document.querySelectorAll('.card-header');
+                headers.forEach(function(header) {
+                    header.style.display = 'none';
+                });
+            }, 500);
+        };
+    </script>
+    """
+    
+    # Insert legend and toggle before closing body tag
+    html = html.replace("</body>", legend_html + toggle_html + "</body>")
     
     # Update title
     html = html.replace("<title>", "<title>🌾 Agricultural Pest Knowledge Graph - ")
